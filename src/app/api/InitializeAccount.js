@@ -123,10 +123,6 @@ if (!hasAccount) {
         JSON.stringify(TransactionArray)
       );
      }
-     // else {
-    //   let oldAccounts = localStorage.getItem("SavedAccounts");
-    //   localStorage.setItem("SavedAccounts", oldAccounts);
-    // }
-
+    
 
 }
