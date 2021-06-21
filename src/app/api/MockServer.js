@@ -37,7 +37,7 @@ const MockServer = ()=>{
             }
     });
       this.post("/profile/login", (schema, request) => {
-        debugger;
+        
         let cred=JSON.parse(request.requestBody);
         let currentUser = JSON.parse(localStorage.getItem('Savedprofiles')).filter(function (pro) {
             return pro.email === cred.email &&
@@ -46,11 +46,11 @@ const MockServer = ()=>{
         if(currentUser.length>=1){
         localStorage.setItem('jwt', currentUser.token);
         localStorage.setItem('CurrentUser',JSON.stringify(currentUser));
-        return currentUser[0];
+       return currentUser[0];
         }else return null;
      });
      this.post("/profile/register", (schema, request) => { 
-       debugger;
+       
       let cred=JSON.parse(request.requestBody);
       let newtoken=generate_token(15);
       let newUser={password : cred.password, displayname : cred.displayname, token: newtoken, email: cred.email};
@@ -61,6 +61,7 @@ const MockServer = ()=>{
       localStorage.setItem('CurrentUser',JSON.stringify(newUser));
       InitializeAccount();
       return newUser;
+     
    });
    this.post('/transactions/',(schema, request)=>{
      if(localStorage.hasOwnProperty("SavedTransactions")){
