@@ -107,7 +107,6 @@ if (!hasAccount) {
     ];
     if(AllPrevAccounts && hasAccountProperty)
     AllPrevAccounts.forEach(element => {
-      debugger;
        userAccountsArray.push(element);
     });
     if(AllPrevTransactions && hasTransactionProperty)
