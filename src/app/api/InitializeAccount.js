@@ -1,14 +1,15 @@
 
 export default function InitializeAccount(){
+  debugger;
   let UserRef= localStorage.getItem('jwt');
    var hasAccountProperty = localStorage.hasOwnProperty("SavedAccounts");
    var hasTransactionProperty = localStorage.hasOwnProperty("SavedTransactions");
    var hasAccount=false;
    let AllPrevAccounts =null;
-   let AllPrevTransactionss =null;
+   let AllPrevTransactions =null;
    if(hasAccountProperty){
    AllPrevAccounts = JSON.parse(localStorage.getItem("SavedAccounts"));
-   AllPrevTransactionss = JSON.parse(localStorage.getItem("SavedTransactions"));
+   AllPrevTransactions = JSON.parse(localStorage.getItem("SavedTransactions"));
   let currentUserAccounts = AllPrevAccounts.filter(function (pro) {
     return pro.userRef === UserRef        
   });
@@ -106,10 +107,11 @@ if (!hasAccount) {
     ];
     if(AllPrevAccounts && hasAccountProperty)
     AllPrevAccounts.forEach(element => {
+      debugger;
        userAccountsArray.push(element);
     });
-    if(AllPrevTransactionss && hasTransactionProperty)
-    hasTransactionProperty.forEach(element => {
+    if(AllPrevTransactions && hasTransactionProperty)
+    AllPrevTransactions.forEach(element => {
       TransactionArray.push(element);
     });
     localStorage.setItem(

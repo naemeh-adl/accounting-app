@@ -50,6 +50,7 @@ const MockServer = ()=>{
         }else return null;
      });
      this.post("/profile/register", (schema, request) => { 
+       debugger;
       let cred=JSON.parse(request.requestBody);
       let newtoken=generate_token(15);
       let newUser={password : cred.password, displayname : cred.displayname, token: newtoken, email: cred.email};

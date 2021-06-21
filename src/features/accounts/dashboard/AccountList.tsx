@@ -7,7 +7,6 @@ import AccountListItem from './AccountListItem';
 export default observer(function AccountList() {
     const { accountStore } = useStore();
     const { groupedAccounts } = accountStore;
-
     return (
         <>
             {groupedAccounts.map(([group, accounts]) => (

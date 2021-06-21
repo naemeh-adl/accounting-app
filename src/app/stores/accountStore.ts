@@ -20,7 +20,7 @@ export default class AccountStore {
     }
 
     get groupedAccounts() {
-        return Object.entries(
+       return Object.entries(
             this.accountsByDate.reduce((accounts, account) => {
                 const date = format(account.date!, 'dd MMM yyyy');
                 accounts[date] = accounts[date] ? [...accounts[date], account] : [account];
