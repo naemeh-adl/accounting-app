@@ -6,14 +6,14 @@ import { useStore } from '../../../app/stores/store';
 import AccountList from './AccountList';
 
 export default observer(function AccountDashboard() {
-    const {accountStore} = useStore();
+    const {accountStore, commonStore} = useStore();
     const {loadAccounts, accountRegistry} = accountStore;
+    const {token}= commonStore;
 
     useEffect(() => {
-    debugger;
-      if (accountRegistry.size <= 1) 
+     // if (accountRegistry.size <= 1) 
       loadAccounts();
-    }, [accountRegistry.size, loadAccounts])
+    }, [accountRegistry.size, loadAccounts, token])
   
     if (accountStore.loadingInitial) return <LoadingComponent content='Loading accounts...' />
 

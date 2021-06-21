@@ -9,7 +9,7 @@ export default class AccountStore {
     editMode = false;
     loading = false;
     loadingInitial = false;
-
+   
     constructor() {
         makeAutoObservable(this)
     }

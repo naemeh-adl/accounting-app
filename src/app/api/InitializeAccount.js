@@ -1,6 +1,5 @@
 
 export default function InitializeAccount(){
-  debugger;
   let UserRef= localStorage.getItem('jwt');
    var hasAccountProperty = localStorage.hasOwnProperty("SavedAccounts");
    var hasTransactionProperty = localStorage.hasOwnProperty("SavedTransactions");

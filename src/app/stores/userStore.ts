@@ -46,8 +46,7 @@ export default class USerStore{
     }
     register = async (creds: User) => {
         try{
-            debugger;
-            const user= await agent.profile.register(creds);
+           const user= await agent.profile.register(creds);
             if(user){
             store.commonStore.setToken(user.token);
             localStorage.setItem('jwt', user.token);

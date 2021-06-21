@@ -37,15 +37,15 @@ const MockServer = ()=>{
             }
     });
       this.post("/profile/login", (schema, request) => {
+        debugger;
         let cred=JSON.parse(request.requestBody);
         let currentUser = JSON.parse(localStorage.getItem('Savedprofiles')).filter(function (pro) {
             return pro.email === cred.email &&
                    pro.password ===cred.password                   
           });
         if(currentUser.length>=1){
-        localStorage.setItem('CurrentUser',JSON.stringify(currentUser));
         localStorage.setItem('jwt', currentUser.token);
-
+        localStorage.setItem('CurrentUser',JSON.stringify(currentUser));
         return currentUser[0];
         }else return null;
      });
@@ -56,9 +56,9 @@ const MockServer = ()=>{
       let newUser={password : cred.password, displayname : cred.displayname, token: newtoken, email: cred.email};
       let currentUsers = JSON.parse(localStorage.getItem('Savedprofiles'));
       currentUsers.push(newUser);
+      localStorage.setItem('jwt', newtoken);
       localStorage.setItem("Savedprofiles", JSON.stringify(currentUsers));
       localStorage.setItem('CurrentUser',JSON.stringify(newUser));
-      localStorage.setItem('jwt', newtoken);
       InitializeAccount();
       return newUser;
    });

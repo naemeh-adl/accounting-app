@@ -12,7 +12,6 @@ export default observer(function Transactions(props:Props){
  const {loadTransactions} = transactionStore;
     useEffect(() => {
       loadTransactions(props.accountId).then(x=>settransactions(x));
-      debugger;
     }, [props.accountId, loadTransactions])
   
     return(
