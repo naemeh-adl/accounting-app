@@ -18,7 +18,7 @@ ReactDOM.render(
     <Router history={history}>
       <App />
     </Router>
-  </StoreContext.Provider>,
+  </StoreContext.Provider>, 
   document.getElementById('root')
 );
 
