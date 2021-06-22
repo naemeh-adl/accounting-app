@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
@@ -10,11 +10,11 @@ export default observer(function AccountDashboard() {
     const {loadAccounts, accountRegistry} = accountStore;
     const {token}= commonStore;
 
-    // useEffect(() => {
-    //   if (accountRegistry.size <= 1) 
-    //   loadAccounts();
+    useEffect(() => {
+      if (accountRegistry.size <= 1) 
+      loadAccounts();
       
-    // }, [accountRegistry.size, loadAccounts, token])
+    }, [accountRegistry.size, loadAccounts, token])
   
     if (accountStore.loadingInitial) return <LoadingComponent content='Loading accounts...' />
 

@@ -1,6 +1,4 @@
 import { Server } from "miragejs";
-import { updateFunctionDeclaration } from "typescript";
-import InitializeAccount from "./InitializeAccount";
 import { v4 as uuid } from 'uuid';
 const MockServer = ()=>{
     function generate_token(length){
