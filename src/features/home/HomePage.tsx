@@ -17,7 +17,7 @@ export default observer(function HomePage() {
                 {userStore.isLoggedIn ? (
                     <>
                         <Header as='h2' inverted content='Welcome to Accounting' />
-                        <Button onClick={()=>accountStore.loadAccounts()} as={Link} to='/accounts/' size='huge' inverted>
+                        <Button as={Link} to='/accounts/' size='huge' inverted>
                         {/* { as={Link} to='/accounts/' size='huge' inverted>} */}
                             Show My Accounts
                         </Button>

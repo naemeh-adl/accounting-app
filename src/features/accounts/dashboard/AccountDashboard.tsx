@@ -10,11 +10,11 @@ export default observer(function AccountDashboard() {
     const {loadAccounts, accountRegistry} = accountStore;
     const {token}= commonStore;
 
-    useEffect(() => {
-     // if (accountRegistry.size <= 1) 
-      loadAccounts();
+    // useEffect(() => {
+    //   if (accountRegistry.size <= 1) 
+    //   loadAccounts();
       
-    }, [accountRegistry.size, loadAccounts, token])
+    // }, [accountRegistry.size, loadAccounts, token])
   
     if (accountStore.loadingInitial) return <LoadingComponent content='Loading accounts...' />
 

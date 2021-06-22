@@ -1,7 +1,8 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, runInAction, transaction } from "mobx";
 import agent from "../api/agent";
 import { Account } from "../models/account";
 import {format} from 'date-fns';
+import { Transaction } from "../models/transactions";
 
 export default class AccountStore {
     accountRegistry = new Map<string, Account>();
@@ -15,17 +16,17 @@ export default class AccountStore {
     }
 
     get accountsByDate() {
-        return Array.from(this.accountRegistry.values()).sort((a, b) =>
-            a.date!.getTime() - b.date!.getTime());
+        return (this.accountRegistry.size>0)?Array.from(this.accountRegistry.values()).sort((a, b) =>
+            a.date!.getTime() - b.date!.getTime()):null;
     }
 
     get groupedAccounts() {
-       return Object.entries(
-            this.accountsByDate.reduce((accounts, account) => {
+      return Object.entries(
+        this.accountsByDate?this.accountsByDate.reduce((accounts, account) => {
                 const date = format(account.date!, 'dd MMM yyyy');
                 accounts[date] = accounts[date] ? [...accounts[date], account] : [account];
                 return accounts;
-            }, {} as {[key: string]: Account[]})
+            }, {} as {[key: string]: Account[]}):[]
         )
     }
 
@@ -85,6 +86,7 @@ export default class AccountStore {
         account.date=new Date();
         account.userRef= window.localStorage.getItem('jwt');
         try {
+            
             await agent.Accounts.create(account);
             runInAction(() => {
                 this.accountRegistry.set(account.id, account);

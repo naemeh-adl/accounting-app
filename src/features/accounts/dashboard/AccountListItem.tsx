@@ -34,10 +34,8 @@ export default function AccountListItem({ account }: Props) {
             </Segment>
             <Segment clearing>
                 <span>{account.description}</span>
-                {account.status==='Pending'?
-                 <Button disabled onClick={() => {modalStore.setSize("large");modalStore.openModal(<Transactions accountId={account.id}/>)}} size='medium'color='teal'floated='right'content='Transactions'/>:
-                 <Button onClick={() => {modalStore.setSize("large");modalStore.openModal(<Transactions accountId={account.id}/>)}} size='medium'color='teal'floated='right'content='Transactions'/>
-                }
+                <Button onClick={() => {modalStore.setSize("large");modalStore.openModal(<Transactions accountId={account.id}/>)}} size='medium'color='teal'floated='right'content='Transactions'/>
+                
             </Segment>
         </Segment.Group>
     )

@@ -28,8 +28,8 @@ export default observer(function Transactions(props:Props){
         </Table.Header>
     
         <Table.Body>
-        {transactions.map(x=>(
-        <Table.Row>
+        {transactions.map((x,i)=>(
+        <Table.Row key={i}>
             <Table.Cell>
               <Label ribbon color={x.Debit==null?"green":"red"}>{x.Debit==null?"+":"-"}</Label>
             </Table.Cell>
