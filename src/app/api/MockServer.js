@@ -1,15 +1,6 @@
 import { Server } from "miragejs";
 import { v4 as uuid } from 'uuid';
 const MockServer = ()=>{
-    function generate_token(length){
-        var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
-        var b = [];  
-        for (var i=0; i<length; i++) {
-            var j = (Math.random() * (a.length-1)).toFixed(0);
-            b[i] = a[j];
-        }
-        return b.join("");
-    }
    return new Server({
     routes() {
     this.namespace = "api";
@@ -33,14 +24,14 @@ const MockServer = ()=>{
           Credit: 100,
           Debit:  null,
           Blance: 1000}
-          let tr2={id: uuid(),
-            date: account.date,
-            description: 'default for test',
-            AccountRef: account.id,
-            Credit: null,
-            Debit:  50,
-            Blance: 950}
-            localStorage.setItem('SavedTransactions',JSON.stringify([tr1,tr2]));
+        let tr2={id: uuid(),
+          date: account.date,
+          description: 'default for test',
+          AccountRef: account.id,
+          Credit: null,
+          Debit:  50,
+          Blance: 950}
+          localStorage.setItem('SavedTransactions',JSON.stringify([tr1,tr2]));
         }
         }
         
@@ -58,8 +49,8 @@ const MockServer = ()=>{
             }
     });
       this.post("/profile/login", (schema, request) => {
-        let cred=JSON.parse(request.requestBody);
-        if(localStorage.hasOwnProperty("Savedprofiles")){
+        let cred=request.requestBody? JSON.parse(request.requestBody):null;
+        if(localStorage.hasOwnProperty("Savedprofiles") && cred){
         let currentUser = JSON.parse(localStorage.getItem('Savedprofiles')).filter(function (pro) {
             return pro.email === cred.email &&
                    pro.password ===cred.password                   
@@ -75,13 +66,16 @@ const MockServer = ()=>{
      });
      this.post("/profile/register", (schema, request) => { 
        
-      let cred=JSON.parse(request.requestBody);
-      let newtoken=generate_token(15);
-      let newUser={password : cred.password, displayname : cred.displayname, token: newtoken, email: cred.email};
+      let cred=request.requestBody?JSON.parse(request.requestBody):null;
+      let newtoken=uuid();
+      let newUser=cred?{password : cred.password, displayname : cred.displayname, token: newtoken, email: cred.email}:null;
       let currentUsers = localStorage.hasOwnProperty("Savedprofiles")?JSON.parse(localStorage.getItem('Savedprofiles')):[];
-      currentUsers.push(newUser);
+      if(newUser)currentUsers.push(newUser);
       localStorage.setItem('jwt', newtoken);
+      if(currentUsers.length>0){
       localStorage.setItem("Savedprofiles", JSON.stringify(currentUsers));
+      }
+      if(newUser)
       localStorage.setItem('CurrentUser',JSON.stringify(newUser));
       // InitializeAccount();
       return newUser;
