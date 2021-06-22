@@ -14,7 +14,7 @@ export default observer(function NavBar() {
                 </Menu.Item>
                 <Menu.Item as={NavLink} to='/accounts' name='Accounts' />
                <Menu.Item>
-                    <Button as={NavLink} to='/createAccount' positive content='Create Account' />
+                    <Button data-test="component-navbar"   as={NavLink} to='/createAccount' positive content='Create Account' />
                 </Menu.Item>
             <Menu.Item position='right'>
                     <Image src={'/assets/user.png'} avatar spaced='right' />
