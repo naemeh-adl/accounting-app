@@ -38,7 +38,7 @@ export default class USerStore{
     getUser = async () => {
         try {
             const user = await agent.profile.current();
-            store.commonStore.setToken(user.token);
+            // store.commonStore.setToken(user.token);
             runInAction(() => this.user = user);
         } catch (error) {
             console.log(error);

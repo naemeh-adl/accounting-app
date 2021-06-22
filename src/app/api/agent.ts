@@ -16,6 +16,12 @@ const mockAxios=axios;
 axios.defaults.baseURL = 'http://localhost:5000/api';
 mockAxios.defaults.baseURL= 'http://localhost:3000/api';
 
+// mockAxios.interceptors.request.use(config => {
+//     const token=store.commonStore.token;
+//     if(token) config.headers.Authorization = `Bearer ${token}`
+//     return config;
+// })
+
 mockAxios.interceptors.response.use(async response => {
     await sleep(1000);
     return response;
@@ -59,8 +65,8 @@ const mockRequests = {
     post: <T>(url: string, body: {}) => mockAxios.post<T>(url, body).then(responseBody),
    }
 const Accounts = {
-    list: () => mockRequests.get<Account[]>('/accounts/'),//requests.get<Account[]>('/accounts'),
-    details: (id: string) => mockRequests.get<Account>(`/accounts/${id}`),//requests.get<Account>(`/accounts/${id}`),
+    list: () => mockRequests.get<Account[]>('/accounts/'),
+    details: (id: string) => mockRequests.get<Account>(`/accounts/${id}`),
     create: (account: Account) => mockAxios.post<void>('/accounts/', account),
   }
 const profile = {

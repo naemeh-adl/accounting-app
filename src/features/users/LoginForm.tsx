@@ -8,7 +8,9 @@ export default observer(function LoginForm(){
     return(
         <Formik
             initialValues={{email:'', password: '', token: '', displayname: '', error: null}}
-            onSubmit={(values, {setErrors})=>userStore.login(values).catch(error => setErrors({error:'Invalid Cridentials'}))}
+            onSubmit={(values, {setErrors})=>{
+                userStore.login(values).catch(error => setErrors({error:'Invalid Cridentials'}));
+           }}//refresh here
         >
             {({handleSubmit, isSubmitting, errors})=>(
                 <Form className= 'ui form' onSubmit={handleSubmit} autoComplete='off'>

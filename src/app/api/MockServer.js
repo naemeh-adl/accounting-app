@@ -26,8 +26,8 @@ const MockServer = ()=>{
         localStorage.setItem('SavedAccounts',JSON.stringify(oldAccounts));
         
       });
-      this.get("/profile/", () => {
-        let currentToken=localStorage.getItem('jwt');
+      this.get("/profile/", (request) => {
+        let currentToken= localStorage.getItem('jwt');
         let currentUser = JSON.parse(localStorage.getItem('Savedprofiles')).filter(function (pro) {
             return pro.token === currentToken.token        
           });
@@ -37,7 +37,7 @@ const MockServer = ()=>{
             }
     });
       this.post("/profile/login", (schema, request) => {
-        
+        debugger;
         let cred=JSON.parse(request.requestBody);
         let currentUser = JSON.parse(localStorage.getItem('Savedprofiles')).filter(function (pro) {
             return pro.email === cred.email &&
@@ -65,8 +65,10 @@ const MockServer = ()=>{
    });
    this.post('/transactions/',(schema, request)=>{
      if(localStorage.hasOwnProperty("SavedTransactions")){
+       debugger;
+      // let currentToken= localStorage.getItem('jwt');
       let accountTransactions = JSON.parse(localStorage.getItem('SavedTransactions')).filter(function (pro) {
-            return pro.AccountRef === request.requestBody                  
+            return pro.AccountRef === request.requestBody //&& pro.userRef ===currentToken                 
           });
         if(accountTransactions.length>=1){
         return accountTransactions;

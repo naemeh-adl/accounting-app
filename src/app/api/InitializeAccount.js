@@ -21,7 +21,7 @@ if (!hasAccount) {
   // InitializeAccount({UserRef:UserRef});
     let userAccountsArray=[
       {
-        id: "f43f0e70-fc51-4c72-b7ed-2d62886b5449",
+        id: "f43f0e70-fc51-4c72-b7ed-2d62886b5449"+UserRef,
         name: "NetBankSaver",
         date: "2021-04-17T13:55:20",
         description: "Default Account",
@@ -30,7 +30,7 @@ if (!hasAccount) {
         userRef: UserRef
       },
       {
-        id: "a2b07fbd-66bd-4311-9bff-ba05f808320e",
+        id: "a2b07fbd-66bd-4311-9bff-ba05f808320e"+UserRef,
         name: "SmartAccess",
         date: "2021-05-17T13:55:21",
         description: "Default Account",
@@ -39,7 +39,7 @@ if (!hasAccount) {
         userRef: UserRef
       },
       {
-        id: "8fc3074b-c1c5-4345-a878-ebddfcf8d57d",
+        id: "8fc3074b-c1c5-4345-a878-ebddfcf8d57d"+UserRef,
         name: "Everyday",
         date: "2021-07-17T13:55:22",
         description: "Default Account",
@@ -53,7 +53,7 @@ if (!hasAccount) {
         id: "8fc3074b-c1c5",
         date: "2021-04-17T13:55:23",
         description: "Shopping1",
-        AccountRef: "f43f0e70-fc51-4c72-b7ed-2d62886b5449",
+        AccountRef: "f43f0e70-fc51-4c72-b7ed-2d62886b5449"+UserRef,
         Credit: null,
         Debit:  100,
         Blance: 150
@@ -62,7 +62,7 @@ if (!hasAccount) {
         id: "8fc3074b-c1c5",
         date: "2021-04-17T13:55:24",
         description: "Payment1",
-        AccountRef: "f43f0e70-fc51-4c72-b7ed-2d62886b5449",
+        AccountRef: "f43f0e70-fc51-4c72-b7ed-2d62886b5449"+UserRef,
         Credit: 50,
         Debit:  null,
         Blance: 200
@@ -71,7 +71,7 @@ if (!hasAccount) {
         id: "a2b07fbd-ddcc",
         date: "2021-05-17T13:55:25",
         description: "Shopping2",
-        AccountRef: "a2b07fbd-66bd-4311-9bff-ba05f808320e",
+        AccountRef: "a2b07fbd-66bd-4311-9bff-ba05f808320e"+UserRef,
         Credit: null,
         Debit:  567,
         Blance: 5600
@@ -80,7 +80,7 @@ if (!hasAccount) {
         id: "a2b07fbd-aabb",
         date: "2021-05-17T13:55:26",
         description: "Payment2",
-        AccountRef: "a2b07fbd-66bd-4311-9bff-ba05f808320e",
+        AccountRef: "a2b07fbd-66bd-4311-9bff-ba05f808320e"+UserRef,
         Credit: 10,
         Debit:  null,
         Blance: 5610
@@ -89,7 +89,7 @@ if (!hasAccount) {
         id: "a2b07fbd-kkkk",
         date: "2021-07-17T13:55:27",
         description: "Shopping3",
-        AccountRef: "8fc3074b-c1c5-4345-a878-ebddfcf8d57d",
+        AccountRef: "8fc3074b-c1c5-4345-a878-ebddfcf8d57d"+UserRef,
         Credit: null,
         Debit:  50,
         Blance: 52369
@@ -98,7 +98,7 @@ if (!hasAccount) {
         id: "a2bkkkbd-66bd",
         date: "2021-07-17T13:55:28",
         description: "Payment3",
-        AccountRef: "8fc3074b-c1c5-4345-a878-ebddfcf8d57d",
+        AccountRef: "8fc3074b-c1c5-4345-a878-ebddfcf8d57d"+UserRef,
         Credit: 50,
         Debit:  null,
         Blance: 52419
