@@ -4,7 +4,7 @@ import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
 import MySelectInput from '../../../app/common/form/MySelectInput';
 
 Enzyme.configure({adapter: new EnzymeAdapter()});
-it("init",()=>{
+it("Dashboard test",()=>{
     const mockProps = {
         label: "label",
         name: "name",
