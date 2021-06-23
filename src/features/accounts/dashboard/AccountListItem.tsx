@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function AccountListItem({ account }: Props) {
-    const {modalStore} = useStore();
+     const {modalStore} = useStore();
     return (
         <Segment.Group>
             <Segment>
@@ -34,7 +34,7 @@ export default function AccountListItem({ account }: Props) {
             </Segment>
             <Segment clearing>
                 <span>{account.description}</span>
-                <Button onClick={() => {modalStore.setSize("large");modalStore.openModal(<Transactions accountId={account.id}/>)}} size='medium'color='teal'floated='right'content='Transactions'/>
+                 <Button onClick={() => {modalStore.setSize("large");modalStore.openModal(<Transactions accountId={account.id}/>)}} size='medium'color='teal'floated='right'content='Transactions'/> 
                 
             </Segment>
         </Segment.Group>
