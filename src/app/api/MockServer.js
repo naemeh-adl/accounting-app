@@ -31,8 +31,11 @@ const MockServer = ()=>{
           Credit: null,
           Debit:  50,
           Blance: 950}
-          localStorage.setItem('SavedTransactions',JSON.stringify([tr1,tr2]));
-        }
+          let currentTransactions = localStorage.hasOwnProperty("SavedTransactions")?JSON.parse(localStorage.getItem('SavedTransactions')):[];
+          currentTransactions.push(tr1);
+          currentTransactions.push(tr2);
+          localStorage.setItem("SavedTransactions", JSON.stringify(currentTransactions));
+         }
         }
         
         localStorage.setItem('SavedAccounts',JSON.stringify(oldAccounts));
